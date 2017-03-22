@@ -1,0 +1,30 @@
+{
+  "name": "TheRealGambo/kong-php",
+  "description": "A PHP7 compliant library for interacting with the Kong Gateway Admin API.",
+  "keywords": ["kong", "kong gateway", "mashape-kong", "api-gateway"],
+  "type": "Library",
+  "require": {
+    "php": ">=7.0",
+    "mashape/unirest-php": "3.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "mockery/mockery": "^0.9.4"
+  },
+  "support": {
+    "issues": "https://github.com/therealgambo/kong-php/issues"
+  },
+  "license": "MIT",
+  "author": "therealgambo (https://github.com/therealgambo)",
+  "autoload": {
+    "psr-4": {
+      "TheRealGambo\\Kong\\": "src/Kong"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev"
+}

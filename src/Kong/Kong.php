@@ -61,6 +61,10 @@ class Kong
 
         // Verify SSL if configured
         Request::verifyPeer($verify_ssl);
+
+        // Ensure we are always sending and receiving JSON
+        $this->setDefaultHeader('Content-Type', 'application/json');
+        $this->setDefaultHeader('Accept', 'application/json');
     }
 
     /**

@@ -28,7 +28,7 @@ final class Api extends AbstractApi implements ApiInterface
         $this->setAllowedOptions($this->apiAllowedOptions);
         $body = $this->createRequestBody($body);
 
-        return $this->postRequest('apis', [], $body);
+        return $this->postRequest('apis', $body, $headers);
     }
 
     /**

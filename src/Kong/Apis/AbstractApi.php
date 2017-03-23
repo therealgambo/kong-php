@@ -138,6 +138,9 @@ class AbstractApi
         // Format the URL for the API request
         $api = $this->url . ':' . $this->port . '/' . $uri;
 
+        // Transform all request body contents to json
+        $body = Request\Body::json($body);
+
         try {
             switch ($http_verb) {
                 case Method::GET:

@@ -133,7 +133,7 @@ class AbstractApi
      *
      * @return array|\stdClass
      */
-    private function request($http_verb, $uri, array $params = [], array $body = [], array $headers = [])
+    public function request($http_verb, $uri, array $params = [], array $body = [], array $headers = [])
     {
         // Format the URL for the API request
         $api = $this->url . ':' . $this->port . '/' . $uri;
@@ -177,6 +177,26 @@ class AbstractApi
     public function getResponse(): Response
     {
         return $this->response;
+    }
+
+    /**
+     * Return the HTTP status code for the last request
+     *
+     * @return integer
+     */
+    public function getStatusCode(): integer
+    {
+        return $this->getResponse()->code;
+    }
+
+    /**
+     * Return the raw body response content;
+     *
+     * @return string
+     */
+    public function getRawBody(): string
+    {
+        return $this->getResponse()->raw_body;
     }
 
     /**

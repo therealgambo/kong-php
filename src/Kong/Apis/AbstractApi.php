@@ -184,7 +184,7 @@ class AbstractApi
      *
      * @return integer
      */
-    public function getStatusCode(): integer
+    public function getStatusCode()
     {
         return $this->getResponse()->code;
     }
@@ -194,7 +194,7 @@ class AbstractApi
      *
      * @return string
      */
-    public function getRawBody(): string
+    public function getRawBody()
     {
         return $this->getResponse()->raw_body;
     }

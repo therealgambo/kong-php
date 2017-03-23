@@ -61,11 +61,6 @@ class Kong
 
         // Verify SSL if configured
         Request::verifyPeer($verify_ssl);
-
-        // Since we are talking to a JSON API, ensure the correct headers are always set.
-        // If you don't want these headers call 'clearDefaultHeaders()' after instantiating this class.
-        $this->setDefaultHeader('Content-Type', 'application/json');
-        $this->setDefaultHeader('Accept', 'application/json');
     }
 
     /**

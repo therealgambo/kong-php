@@ -75,7 +75,6 @@ final class Consumer extends AbstractApi implements ConsumerInterface
         return $this->getRequest('consumers', $params, $headers);
     }
 
-
     /**
      * Update a consumer in Kong
      *

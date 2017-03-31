@@ -49,6 +49,12 @@ $apis = $kong->getApiObject();
 print_r($apis->list());
 ```
 
+## Versions
+
+All releases will match for the stable versions of Kong released >= 0.10.0
+
+This ensures stability and resillence within the library reducing any compatibility issues between versions.
+
 ## License
 
 Kong-php is open-source software and licensed under the [MIT License](http://opensource.org/licenses/MIT).

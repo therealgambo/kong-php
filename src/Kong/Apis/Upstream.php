@@ -71,6 +71,22 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     }
 
     /**
+     * Disable an upstream target in the load-balancer
+     *
+     * @see https://getkong.org/docs/0.10.x/admin-api/#delete-target
+     *
+     * @param $identifier
+     * @param $target_identifier
+     * @param array $headers
+     *
+     * @return array|\stdClass
+     */
+    public function disableTarget($identifier, $target_identifier, array $headers = [])
+    {
+        return $this->deleteRequest('upstreams/' . $identifier . '/targets/' . $target_identifier, $headers);
+    }
+
+    /**
      * Retrieve a specific upstream from Kong
      *
      * @see https://getkong.org/docs/0.10.x/admin-api/#retrieve-upstream
@@ -115,6 +131,22 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     public function listTargets($identifier, array $params = [], array $headers = [])
     {
         return $this->getRequest('upstreams/' . $identifier . '/targets', $params, $headers);
+    }
+
+    /**
+     * Retrieve all active targets for an upstream in Kong
+     *
+     * @see https://getkong.org/docs/0.10.x/admin-api/#list-active-targets
+     *
+     * @param string $identifier
+     * @param array  $params
+     * @param array  $headers
+     *
+     * @return array|\stdClass
+     */
+    public function listActiveTargets($identifier, array $params = [], array $headers = [])
+    {
+        return $this->getRequest('upstreams/' . $identifier . '/targets/active', $params, $headers);
     }
 
     /**

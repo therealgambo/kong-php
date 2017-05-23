@@ -1,8 +1,9 @@
 <?php
 
-namespace TheRealGambo\Kong\Apis;
+namespace TheRealGambo\Kong\Apis\Plugins;
 
-use TheRealGambo\Kong\Apis\Plugins\BasicAuthInterface;
+use TheRealGambo\Kong\Apis\AbstractApi;
+use TheRealGambo\Kong\Apis\Consumer;
 
 final class BasicAuth extends AbstractApi implements BasicAuthInterface
 {

@@ -10,6 +10,7 @@ use TheRealGambo\Kong\Apis\Node;
 use TheRealGambo\Kong\Apis\Plugin;
 use TheRealGambo\Kong\Apis\Plugins\BasicAuth;
 use TheRealGambo\Kong\Apis\Plugins\KeyAuth;
+use TheRealGambo\Kong\Apis\Plugins\Jwt;
 use TheRealGambo\Kong\Apis\Sni;
 use TheRealGambo\Kong\Apis\Upstream;
 use TheRealGambo\Kong\Exceptions\InvalidUrlException;
@@ -202,5 +203,15 @@ class Kong
     public function getPluginBasicAuth()
     {
         return new BasicAuth($this->url, $this->port);
+    }
+
+    /**
+     * Returns a new instance of the JWT plugin
+     *
+     * @return \TheRealGambo\Kong\Apis\Plugins\Jwt
+     */
+    public function getPluginJwt()
+    {
+        return new Jwt($this->url, $this->port);
     }
 }

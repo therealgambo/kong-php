@@ -8,6 +8,7 @@ use TheRealGambo\Kong\Apis\Cluster;
 use TheRealGambo\Kong\Apis\Consumer;
 use TheRealGambo\Kong\Apis\Node;
 use TheRealGambo\Kong\Apis\Plugin;
+use TheRealGambo\Kong\Apis\Plugins\BasicAuth;
 use TheRealGambo\Kong\Apis\Plugins\KeyAuth;
 use TheRealGambo\Kong\Apis\Sni;
 use TheRealGambo\Kong\Apis\Upstream;
@@ -191,5 +192,15 @@ class Kong
     public function getPluginKeyAuth()
     {
         return new KeyAuth($this->url, $this->port);
+    }
+
+    /**
+     * Returns a new instance of the Basic Auth Plugin
+     *
+     * @return \TheRealGambo\Kong\Apis\Plugins\BasicAuth
+     */
+    public function getPluginBasicAuth()
+    {
+        return new BasicAuth($this->url, $this->port);
     }
 }

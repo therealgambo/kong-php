@@ -192,4 +192,14 @@ class Kong
     {
         return new KeyAuth($this->url, $this->port);
     }
+
+    /**
+     * Returns a new instance of the Basic Auth Plugin
+     *
+     * @return BasicAuth
+     */
+    public function getPluginBasicAuth()
+    {
+        return new BasicAuth($this->url, $this->port);
+    }
 }

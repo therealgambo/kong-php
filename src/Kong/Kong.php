@@ -8,6 +8,7 @@ use TheRealGambo\Kong\Apis\Cluster;
 use TheRealGambo\Kong\Apis\Consumer;
 use TheRealGambo\Kong\Apis\Node;
 use TheRealGambo\Kong\Apis\Plugin;
+use TheRealGambo\Kong\Apis\Plugins\KeyAuth;
 use TheRealGambo\Kong\Apis\Sni;
 use TheRealGambo\Kong\Apis\Upstream;
 use TheRealGambo\Kong\Exceptions\InvalidUrlException;
@@ -180,5 +181,15 @@ class Kong
     public function getUpstreamObject()
     {
         return new Upstream($this->url, $this->port);
+    }
+
+    /**
+     * Returns a new instance of the Key Auth plugin
+     *
+     * @return \TheRealGambo\Kong\Apis\Plugins\KeyAuth
+     */
+    public function getPluginKeyAuth()
+    {
+        return new KeyAuth($this->url, $this->port);
     }
 }

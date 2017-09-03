@@ -61,6 +61,23 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     }
 
     /**
+     * Retrieve information about a specific plugin assigned to a Kong consumer
+     *
+     * @see https://github.com/Mashape/kong/pull/2714
+     *
+     * @param string $identifier
+     * @param string $plugin_identifier
+     * @param array  $params
+     * @param array  $headers
+     *
+     * @return array|\stdClass
+     */
+    public function getConsumerPlugin($identifier, $plugin_identifier, array $params = [], array $headers = [])
+    {
+        return $this->getRequest('consumers/' . $identifier . '/plugins/' . $plugin_identifier, $params, $headers);
+    }
+
+    /**
      * Retrieve all consumers from Kong
      *
      * @see https://getkong.org/docs/0.10.x/admin-api/#list-consumers
@@ -73,6 +90,22 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     public function list(array $params = [], array $headers = [])
     {
         return $this->getRequest('consumers', $params, $headers);
+    }
+
+    /**
+     * Retrieve all plugins that are assigned to a Kong consumer
+     *
+     * @see https://github.com/Mashape/kong/pull/2714
+     *
+     * @param string $identifier
+     * @param array  $params
+     * @param array  $headers
+     *
+     * @return array|\stdClass
+     */
+    public function listConsumerPlugins($identifier, array $params = [], array $headers = [])
+    {
+        return $this->getRequest('consumers/' . $identifier . '/plugins', $params, $headers);
     }
 
     /**

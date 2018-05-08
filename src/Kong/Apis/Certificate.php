@@ -14,7 +14,7 @@ final class Certificate extends AbstractApi implements CertificateInterface
     /**
      * Add a new certificate to Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#add-certificate
+     * @see https://getkong.org/docs/0.13.x/admin-api/#add-certificate
      *
      * @param array $body
      * @param array $headers
@@ -32,7 +32,7 @@ final class Certificate extends AbstractApi implements CertificateInterface
     /**
      * Delete a specific certificate from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#delete-certificate
+     * @see https://getkong.org/docs/0.13.x/admin-api/#delete-certificate
      *
      * @param string $identifier
      * @param array  $headers
@@ -47,7 +47,7 @@ final class Certificate extends AbstractApi implements CertificateInterface
     /**
      * Retrieve a specific certificate from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#retrieve-certificate
+     * @see https://getkong.org/docs/0.13.x/admin-api/#retrieve-certificate
      *
      * @param string $identifier
      * @param array  $params
@@ -63,7 +63,7 @@ final class Certificate extends AbstractApi implements CertificateInterface
     /**
      * Retrieve all certificates from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#list-certificates
+     * @see https://getkong.org/docs/0.13.x/admin-api/#list-certificates
      *
      * @param array $params
      * @param array $headers
@@ -78,7 +78,7 @@ final class Certificate extends AbstractApi implements CertificateInterface
     /**
      * Update a certificate on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-certificate
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-certificate
      *
      * @param string $identifier
      * @param array  $body
@@ -97,7 +97,7 @@ final class Certificate extends AbstractApi implements CertificateInterface
     /**
      * Update or Create a certificate on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-or-create-certificate
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-or-create-certificate
      *
      * @param array $body
      * @param array $headers

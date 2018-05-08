@@ -14,7 +14,7 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     /**
      * Create a new consumer in Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#create-consumer
+     * @see https://getkong.org/docs/0.13.x/admin-api/#create-consumer
      *
      * @param array $body
      * @param array $headers
@@ -32,7 +32,7 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     /**
      * Delete a consumer from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#delete-consumer
+     * @see https://getkong.org/docs/0.13.x/admin-api/#delete-consumer
      *
      * @param string $identifier
      * @param array  $headers
@@ -47,7 +47,7 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     /**
      * Retrieve information about a consumer from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#retrieve-consumer
+     * @see https://getkong.org/docs/0.13.x/admin-api/#retrieve-consumer
      *
      * @param string $identifier
      * @param array  $params
@@ -80,7 +80,7 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     /**
      * Retrieve all consumers from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#list-consumers
+     * @see https://getkong.org/docs/0.13.x/admin-api/#list-consumers
      *
      * @param array $params
      * @param array $headers
@@ -111,7 +111,7 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     /**
      * Update a consumer in Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-consumer
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-consumer
      *
      * @param string $identifier
      * @param array  $body
@@ -130,7 +130,7 @@ final class Consumer extends AbstractApi implements ConsumerInterface
     /**
      * Update or Create a consumer in Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-or-create-consumer
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-or-create-consumer
      *
      * @param array $body
      * @param array $headers

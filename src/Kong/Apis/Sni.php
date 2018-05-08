@@ -14,7 +14,7 @@ final class Sni extends AbstractApi implements SniInterface
     /**
      * Add an SNI entry on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#add-sni
+     * @see https://getkong.org/docs/0.13.x/admin-api/#add-sni
      *
      * @param array $body
      * @param array $headers
@@ -32,7 +32,7 @@ final class Sni extends AbstractApi implements SniInterface
     /**
      * Delete an SNI object from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#delete-sni
+     * @see https://getkong.org/docs/0.13.x/admin-api/#delete-sni
      *
      * @param string $identifier
      * @param array  $headers
@@ -47,7 +47,7 @@ final class Sni extends AbstractApi implements SniInterface
     /**
      * Retrieve a specific SNI object from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#retrieve-sni
+     * @see https://getkong.org/docs/0.13.x/admin-api/#retrieve-sni
      *
      * @param string $identifier
      * @param array  $params
@@ -63,7 +63,7 @@ final class Sni extends AbstractApi implements SniInterface
     /**
      * Retrieve all SNI objects from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#list-snis
+     * @see https://getkong.org/docs/0.13.x/admin-api/#list-snis
      *
      * @param array $params
      * @param array $headers
@@ -78,7 +78,7 @@ final class Sni extends AbstractApi implements SniInterface
     /**
      * Update an SNI entry on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-sni
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-sni
      *
      * @param string $identifier
      * @param array  $body
@@ -97,7 +97,7 @@ final class Sni extends AbstractApi implements SniInterface
     /**
      * Update or Create an SNI entry on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-or-create-sni
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-or-create-sni
      *
      * @param array $body
      * @param array $headers

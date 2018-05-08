@@ -2,6 +2,11 @@
 
 namespace TheRealGambo\Kong\Apis;
 
+/**
+ * Class Api
+ * @package TheRealGambo\Kong\Apis
+ * @deprecated https://getkong.org/docs/0.13.x/admin-api/#api-object
+ */
 final class Api extends AbstractApi implements ApiInterface
 {
     /**
@@ -16,7 +21,7 @@ final class Api extends AbstractApi implements ApiInterface
     /**
      * Add an API to Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#add-api
+     * @see https://getkong.org/docs/0.13.x/admin-api/#add-api
      *
      * @param array $body
      * @param array $headers
@@ -34,7 +39,7 @@ final class Api extends AbstractApi implements ApiInterface
     /**
      * Delete an API endpoint from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#delete-api
+     * @see https://getkong.org/docs/0.13.x/admin-api/#delete-api
      *
      * @param string $identifier
      * @param array  $headers
@@ -49,7 +54,7 @@ final class Api extends AbstractApi implements ApiInterface
     /**
      * Retrieve information about a specific API from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#retrieve-api
+     * @see https://getkong.org/docs/0.13.x/admin-api/#retrieve-api
      *
      * @param string $identifier
      * @param array  $params
@@ -65,7 +70,7 @@ final class Api extends AbstractApi implements ApiInterface
     /**
      * List all API's in Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#list-apis
+     * @see https://getkong.org/docs/0.13.x/admin-api/#list-apis
      *
      * @param array $params
      * @param array $headers
@@ -80,7 +85,7 @@ final class Api extends AbstractApi implements ApiInterface
     /**
      * Update an API on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-api
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-api
      *
      * @param string $identifier
      * @param array  $body
@@ -99,7 +104,7 @@ final class Api extends AbstractApi implements ApiInterface
     /**
      * Update or Create an API on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-or-create-api
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-or-create-api
      *
      * @param array $body
      * @param array $headers

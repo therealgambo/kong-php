@@ -4,13 +4,14 @@ namespace TheRealGambo\Kong;
 
 use TheRealGambo\Kong\Apis\Api;
 use TheRealGambo\Kong\Apis\Certificate;
-use TheRealGambo\Kong\Apis\Cluster;
 use TheRealGambo\Kong\Apis\Consumer;
 use TheRealGambo\Kong\Apis\Node;
 use TheRealGambo\Kong\Apis\Plugin;
 use TheRealGambo\Kong\Apis\Plugins\BasicAuth;
 use TheRealGambo\Kong\Apis\Plugins\KeyAuth;
 use TheRealGambo\Kong\Apis\Plugins\Jwt;
+use TheRealGambo\Kong\Apis\Route;
+use TheRealGambo\Kong\Apis\Service;
 use TheRealGambo\Kong\Apis\Sni;
 use TheRealGambo\Kong\Apis\Upstream;
 use TheRealGambo\Kong\Exceptions\InvalidUrlException;
@@ -106,9 +107,29 @@ class Kong
     }
 
     /**
+     * Returns a new instance of the Service endpoint
+     *
+     * @return Service
+     */
+    public function getServiceObject()
+    {
+        return new Service($this->url, $this->port);
+    }
+
+    /**
+     * Returns a new instance of the Route endpoint
+     *
+     * @return Route
+     */
+    public function getRouteObject()
+    {
+        return new Route($this->url, $this->port);
+    }
+
+    /**
      * Returns a new instance of the Node endpoint
      *
-     * @return \TheRealGambo\Kong\Apis\Node
+     * @return Node
      */
     public function getNodeObject()
     {
@@ -116,19 +137,11 @@ class Kong
     }
 
     /**
-     * Returns a new instance of the Cluster endpoint
-     *
-     * @return \TheRealGambo\Kong\Apis\Cluster
-     */
-    public function getClusterObject()
-    {
-        return new Cluster($this->url, $this->port);
-    }
-
-    /**
      * Returns a new instance of the Api endpoint
      *
-     * @return \TheRealGambo\Kong\Apis\Api
+     * @deprecated
+     *
+     * @return Api
      */
     public function getApiObject()
     {
@@ -138,7 +151,7 @@ class Kong
     /**
      * Returns a new instance of the Consumer endpoint
      *
-     * @return \TheRealGambo\Kong\Apis\Consumer
+     * @return Consumer
      */
     public function getConsumerObject()
     {
@@ -148,7 +161,7 @@ class Kong
     /**
      * Returns a new instance of the Plugin endpoint
      *
-     * @return \TheRealGambo\Kong\Apis\Plugin
+     * @return Plugin
      */
     public function getPluginObject()
     {
@@ -158,7 +171,7 @@ class Kong
     /**
      * Returns a new instance of the Certificate endpoint
      *
-     * @return \TheRealGambo\Kong\Apis\Certificate
+     * @return Certificate
      */
     public function getCertificateObject()
     {
@@ -168,7 +181,7 @@ class Kong
     /**
      * Returns a new instance of the SNI endpoint
      *
-     * @return \TheRealGambo\Kong\Apis\Sni
+     * @return Sni
      */
     public function getSNIObject()
     {
@@ -178,7 +191,7 @@ class Kong
     /**
      * Returns a new instance of the Upstream endpoint
      *
-     * @return \TheRealGambo\Kong\Apis\Upstream
+     * @return Upstream
      */
     public function getUpstreamObject()
     {
@@ -188,7 +201,7 @@ class Kong
     /**
      * Returns a new instance of the Key Auth plugin
      *
-     * @return \TheRealGambo\Kong\Apis\Plugins\KeyAuth
+     * @return KeyAuth
      */
     public function getPluginKeyAuth()
     {
@@ -198,7 +211,7 @@ class Kong
     /**
      * Returns a new instance of the Basic Auth Plugin
      *
-     * @return \TheRealGambo\Kong\Apis\Plugins\BasicAuth
+     * @return BasicAuth
      */
     public function getPluginBasicAuth()
     {
@@ -208,7 +221,7 @@ class Kong
     /**
      * Returns a new instance of the JWT plugin
      *
-     * @return \TheRealGambo\Kong\Apis\Plugins\Jwt
+     * @return Jwt
      */
     public function getPluginJwt()
     {

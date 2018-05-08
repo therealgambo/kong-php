@@ -9,19 +9,21 @@ final class Upstream extends AbstractApi implements UpstreamInterface
      *
      * @var array
      */
-    private $upstreamAllowedOptions = ['name', 'slots', 'orderlist'];
+    private $upstreamAllowedOptions = [
+        'name', 'slots', 'hash_on', 'hash_fallback', 'hash_on_header', 'hash_fallback_header'
+    ];
 
     /**
      * Array of valid body options
      *
      * @var array
      */
-    private $targetAllowedOptions   = ['target', 'weight'];
+    private $targetAllowedOptions = ['target', 'weight'];
 
     /**
      * Add an upstream entry to Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#add-upstream
+     * @see https://getkong.org/docs/0.13.x/admin-api/#add-upstream
      *
      * @param array $body
      * @param array $headers
@@ -39,7 +41,7 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     /**
      * Add a target to an upstream on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#add-target
+     * @see https://getkong.org/docs/0.13.x/admin-api/#add-target
      *
      * @param string $identifier
      * @param array  $body
@@ -58,7 +60,7 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     /**
      * Delete an upstream from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#delete-upstream
+     * @see https://getkong.org/docs/0.13.x/admin-api/#delete-upstream
      *
      * @param string $identifier
      * @param array  $headers
@@ -73,15 +75,15 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     /**
      * Disable an upstream target in the load-balancer
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#delete-target
+     * @see https://getkong.org/docs/0.13.x/admin-api/#delete-target
      *
-     * @param $identifier
-     * @param $target_identifier
-     * @param array $headers
+     * @param string $identifier
+     * @param string $target_identifier
+     * @param array  $headers
      *
      * @return array|\stdClass
      */
-    public function disableTarget($identifier, $target_identifier, array $headers = [])
+    public function deleteTarget($identifier, $target_identifier, array $headers = [])
     {
         return $this->deleteRequest('upstreams/' . $identifier . '/targets/' . $target_identifier, $headers);
     }
@@ -89,7 +91,7 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     /**
      * Retrieve a specific upstream from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#retrieve-upstream
+     * @see https://getkong.org/docs/0.13.x/admin-api/#retrieve-upstream
      *
      * @param string $identifier
      * @param array  $params
@@ -105,7 +107,7 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     /**
      * Retrieve all upstreams from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#list-upstreams
+     * @see https://getkong.org/docs/0.13.x/admin-api/#list-upstreams
      *
      * @param array $params
      * @param array $headers
@@ -118,9 +120,9 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     }
 
     /**
-     * Retrieve all targets for an upstream from Kong
+     * Retrieve all active targets for an upstream from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#list-targets
+     * @see https://getkong.org/docs/0.13.x/admin-api/#list-targets
      *
      * @param string $identifier
      * @param array  $params
@@ -134,9 +136,9 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     }
 
     /**
-     * Retrieve all active targets for an upstream in Kong
+     * Retrieve all targets for an upstream from Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#list-active-targets
+     * @see https://getkong.org/docs/0.13.x/admin-api/#list-all-targets
      *
      * @param string $identifier
      * @param array  $params
@@ -144,19 +146,19 @@ final class Upstream extends AbstractApi implements UpstreamInterface
      *
      * @return array|\stdClass
      */
-    public function listActiveTargets($identifier, array $params = [], array $headers = [])
+    public function listAllTargets($identifier, array $params = [], array $headers = [])
     {
-        return $this->getRequest('upstreams/' . $identifier . '/targets/active', $params, $headers);
+        return $this->getRequest('upstreams/' . $identifier . '/targets/all', $params, $headers);
     }
 
     /**
      * Update an upstream entry on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-upstream
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-upstream
      *
-     * @param $identifier
-     * @param array $body
-     * @param array $headers
+     * @param string $identifier
+     * @param array  $body
+     * @param array  $headers
      *
      * @return array|\stdClass
      */
@@ -171,7 +173,7 @@ final class Upstream extends AbstractApi implements UpstreamInterface
     /**
      * Update or Create a new upstream on Kong
      *
-     * @see https://getkong.org/docs/0.10.x/admin-api/#update-or-create-upstream
+     * @see https://getkong.org/docs/0.13.x/admin-api/#update-or-create-upstream
      *
      * @param array $body
      * @param array $headers
@@ -184,5 +186,49 @@ final class Upstream extends AbstractApi implements UpstreamInterface
         $body = $this->createRequestBody($body);
 
         return $this->putRequest('upstreams', $body, $headers);
+    }
+
+    /**
+     * Mark Target as Healthy in Kong
+     *
+     * @see https://getkong.org/docs/0.13.x/admin-api/#set-target-as-healthy
+     *
+     * @param array $body
+     * @param array $headers
+     *
+     * @return array|\stdClass
+     */
+    public function setTargetHealthy($identifier, $target_identifier, array $body = [], array $headers = [])
+    {
+        $this->setAllowedOptions();
+        $body = $this->createRequestBody($body);
+
+        return $this->postRequest(
+            'upstreams/' . $identifier . '/targets/' . $target_identifier . '/healthy',
+            $body,
+            $headers
+        );
+    }
+
+    /**
+     * Mark Target as Healthy in Kong
+     *
+     * @see https://getkong.org/docs/0.13.x/admin-api/#set-target-as-unhealthy
+     *
+     * @param array $body
+     * @param array $headers
+     *
+     * @return array|\stdClass
+     */
+    public function setTargetUnhealthy($identifier, $target_identifier, array $body = [], array $headers = [])
+    {
+        $this->setAllowedOptions();
+        $body = $this->createRequestBody($body);
+
+        return $this->postRequest(
+            'upstreams/' . $identifier . '/targets/' . $target_identifier . '/unhealthy',
+            $body,
+            $headers
+        );
     }
 }

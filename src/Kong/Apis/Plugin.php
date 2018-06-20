@@ -73,7 +73,7 @@ final class Plugin extends AbstractApi implements PluginInterface
      */
     public function getEnabledPlugins(array $params = [], array $headers = [])
     {
-        return $this->getRequest('/plugins/enabled', $params, $headers);
+        return $this->getRequest('plugins/enabled', $params, $headers);
     }
 
     /**
